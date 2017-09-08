@@ -2,17 +2,14 @@
 
 <p>Age: <%= @artist.age %></p>
 <p>Bio: <%= @artist.bio %></p>
-<<<<<<< HEAD
-=======
 
 <h3>Songs</h3>
 <% if @artist.songs.any? %>
   <ul>
     <% @artist.songs.each do |song| %>
-      <li><%= song.name %></li>
+      <li><%= song.track %></li>
     <% end %>
   </ul>
 <% else %>
   <p>There are no songs belong to this artist. </p>
 <% end %>
->>>>>>> artist_show_page
