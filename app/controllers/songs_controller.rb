@@ -18,7 +18,7 @@ class SongsController < ApplicationController
   end
 
   def destroy
-    @song = Song.find(params[:id])
+    @Artist = Artist.find(params[:artist_id])
     @song = @artist.songs.find(params[:id])
     @song.destroy
     redirect_to artists_path(@artist)
