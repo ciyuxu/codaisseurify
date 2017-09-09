@@ -10,7 +10,10 @@
 <% if @artist.songs.any? %>
     <% @artist.songs.each do |song| %>
       <p><%= song.track %></p>
-
+<%= link_to "Delete this song",
+      artist_song_path(@artist, song),
+      method: :delete,
+      data: { confirm: 'Are you sure?'} %>
 
     <% end %>
   </ul>
