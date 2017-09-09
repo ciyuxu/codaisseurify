@@ -1,4 +1,8 @@
 <h1><%= @artist.name %></h1>
+<p>Photo</p>
+
+  <%= image_tag @artist.photo.image %>
+
 
 <p>Age: <%= @artist.age %></p>
 <p>Bio: <%= @artist.bio %></p>
@@ -14,6 +18,8 @@
   <%else%>
   <p>There are no songs belong to this artist. </p>
 <% end %>
+
+
 <hr>
 <%= render 'songs/form' %>
 <hr>

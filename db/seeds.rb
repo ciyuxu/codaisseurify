@@ -1,3 +1,4 @@
+Artist.destroy_all
 
 #artists
 artist1 = Artist.create!(name: "Radiohead", age: 32, bio: "Radiohead are an English rock band from Abingdon, Oxfordshire, formed in 1985.")
@@ -15,3 +16,8 @@ song6 = Song.create!(track: "I'm Jim Morrison, I'm Dead", lyrics: "I'm Jim Morri
 song7 = Song.create!(track: "A Song For Our Fathers", lyrics: "A Song For Our Fathers", album: "How Strange, Innocence", artist: artist3)
 song8 = Song.create!(track: "Snow And Lights", lyrics: "Snow And Lights", album: "How Strange, Innocence", artist: artist3)
 song9 = Song.create!(track: "The Only Moment We Were Alone", lyrics: "The Only Moment We Were Alone", album: "The Earth Is Not a Cold Dead Place", artist: artist3)
+
+#photos
+photo1 = Photo.create!(remote_image_url: "http://res.cloudinary.com/dnxpj95us/image/upload/v1504976966/littlebylisten.wordpress.com__zwvmz6.jpg", artist: artist1)
+photo2 = Photo.create!(remote_image_url: "http://res.cloudinary.com/dnxpj95us/image/upload/v1504976965/c5063bd523de4326c31f768d417c63a1_rgxk2m.jpg", artist: artist2)
+photo3 = Photo.create!(remote_image_url: "http://res.cloudinary.com/dnxpj95us/image/upload/v1504976966/Explosions_in_the_Sky_ykjtiv.jpg", artist: artist3)
