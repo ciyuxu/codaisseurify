@@ -18,13 +18,22 @@ class SongsController < ApplicationController
   end
 
   def destroy
-    @Artist = Artist.find(params[:artist_id])
-    @song = @artist.songs.find(params[:id])
-    @song.destroy
-    redirect_to artists_path(@artist)
-  end
+  @artist = Artist.find(params[:artist_id])
+  @song = @artist.songs.find(params[:id])
+  @song.destroy
 
-  private
+  redirect_to artist_path(@artist)
+end
+
+
+# def destroy
+#       @song = songs.destroy(song_params)
+#
+#       redirect_to artist_path(@artist)notice: "song deleted!"
+#     end
+
+
+
   def song_params
     params.require(:song).permit(:track, :lyrics, :album)
   end

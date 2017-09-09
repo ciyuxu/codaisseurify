@@ -1,7 +1,6 @@
 <h1><%= @artist.name %></h1>
 <p>Photo</p>
-
-  <%= image_tag @artist.photo.image %>
+  <%= image_tag @artist.photo.image.thumbnail %>
 
 
 <p>Age: <%= @artist.age %></p>
