@@ -5,11 +5,14 @@
 
 <h3>Songs</h3>
 <% if @artist.songs.any? %>
-  <ul>
     <% @artist.songs.each do |song| %>
-      <li><%= song.track %></li>
+      <p><%= song.track %></p>
+      
     <% end %>
   </ul>
-<% else %>
+  <%else%>
   <p>There are no songs belong to this artist. </p>
 <% end %>
+<hr>
+<%= render 'songs/form' %>
+<hr>
