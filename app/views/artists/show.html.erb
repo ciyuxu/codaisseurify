@@ -7,16 +7,21 @@
 <p>Bio: <%= @artist.bio %></p>
 
 <h3>Songs</h3>
+<ul id="songList">
+
 <% if @artist.songs.any? %>
     <% @artist.songs.each do |song| %>
-      <p><%= song.track %></p>
-<%= link_to "Delete this song",
-      artist_song_path(@artist, song),
-      method: :delete,
-      data: { confirm: 'Are you sure?'} %>
-
+      <li class="song" song-id="<%=song.id%>"><%= song.track %>
+    <label class="deleteSong">Delete this song</label>
+    <!-- <a href="#" class="deleteSong">Delete this song</a> -->
+      <!-- # artist_song_path(@artist, song),
+      # method: :delete,
+      # data: { confirm: 'Are you sure?'} %>
+     -->
+  </li>
     <% end %>
-  </ul>
+
+</ul>
   <%else%>
   <p>There are no songs belong to this artist. </p>
 <% end %>
@@ -25,4 +30,6 @@
 <hr>
 <%= render 'songs/form' %>
 <hr>
-<%= link_to "Delete this Artist", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" } %>
+<%= link_to "Delete this Artist", artist_path(@artist.id),
+    method: :delete,
+    data: { confirm: "Are you sure?" } %>

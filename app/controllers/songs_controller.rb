@@ -10,10 +10,15 @@ class SongsController < ApplicationController
   def create
     @song = Song.new(song_params.merge(artist_id:params[:artist_id]))
 
-    if @song.save
-      redirect_to @song.artist, notice: "Song created"
-    else
-      render :new
+
+    respond_to do |format|
+      if @song.save
+        format.html { redirect_to @song.artist, notice: "Song created" }
+        format.json {}
+      else
+        format.html { render :new }
+        format.json {}
+      end
     end
   end
 
