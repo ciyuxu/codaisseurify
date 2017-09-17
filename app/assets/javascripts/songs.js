@@ -27,13 +27,24 @@ function submitSong(event){
 
 function addSong(event){
   event.preventDefault();
-
   var track = $("input[name='track']").val();
-  var lyrics = $("input[lyrics='lyrics']").val();
-  var album = $("input[album='album']").val();
+  var lyrics = $("input[name='lyrics']").val();
+  var album = $("input[name='album']").val();
   var labelItem = $("<label></label>");
   var listItem = $("<li></li>");
-
+  var artistId = $("input[name='artistId']").val();
+  var newSong = { track: track, lyrics: lyrics, album: album }
+  $.ajax({
+    type: "POST",
+    url: "/artists/" + artistId + "/songs.json",
+    data: JSON.stringify({
+      song: newSong
+    }),
+    contentType: "application/json",
+    dataType: "json"
+  })
+  .done(function(data) {
+    console.log(data);
 
   listItem.html(track);
   labelItem.html("delete this song").bind('click', deleteSong);
@@ -42,6 +53,7 @@ function addSong(event){
   listItem.append(labelItem);
   $("#songList").append(listItem);
 
+});
 }
 
 function deleteSong(event){

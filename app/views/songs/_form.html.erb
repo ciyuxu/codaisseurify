@@ -1,5 +1,6 @@
 <h4>Add new song here</h4>
-<%= form_for [@artist, @artist.songs.new] do |f| %>
+<form>
+  <input type="hidden" name="artistId" value="<%= @artist.id %>">
 <label>Track</label>
     <input class="form-control" name="track" placeholder="Track name"><br>
 <label>Lyrics</label>
@@ -10,5 +11,5 @@
 <br>
 
 <label class="newSong">Add this song now</label>
-
-<% end %>
+</form>
+<script></script>
