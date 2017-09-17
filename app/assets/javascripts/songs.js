@@ -52,16 +52,32 @@ function addSong(event){
   labelItem.addClass("deleteSong");
   listItem.append(labelItem);
   $("#songList").append(listItem);
-
-});
+  });
 }
+
+// function deleteSong(event){
+//   event.preventDefault();
+//   $(event.target).closest(".song").remove();
+// }
 
 function deleteSong(event){
   event.preventDefault();
+  var artistId = $("input[name='artistId']").val();
+  var listItem = $(event.target).closest(".song");
+  var songId = listItem.attr("data-song-id");
+  $.ajax({
+    type: "DELETE",
+    url: "/artists/" + artistId + "/songs/" + songId + ".json",
+    // data: JSON.stringify({
+    //   song: song
+    // }),
+    contentType: "application/json",
+    dataType: "json"
+  })
+  .done(function(data){
   $(event.target).closest(".song").remove();
+  });
 }
-
-
 
 function deleteAllSongs(event){
   event.preventDefault();

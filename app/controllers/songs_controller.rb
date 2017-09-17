@@ -27,7 +27,9 @@ class SongsController < ApplicationController
   @song = @artist.songs.find(params[:id])
   @song.destroy
 
-  redirect_to artist_path(@artist)
+  # if :format != ".json"
+  #   redirect_to artist_path(@artist)
+  # end
 end
 
 
