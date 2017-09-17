@@ -46,10 +46,12 @@ function addSong(event){
   .done(function(data) {
     console.log(data);
 
+
   listItem.html(track);
-  labelItem.html("delete this song").bind('click', deleteSong);
+  labelItem.html("Delete this song").bind('click', deleteSong);
   listItem.addClass("song");
   labelItem.addClass("deleteSong");
+  listItem.attr("data-song-id", data.id);
   listItem.append(labelItem);
   $("#songList").append(listItem);
   });
@@ -81,12 +83,21 @@ function deleteSong(event){
 
 function deleteAllSongs(event){
   event.preventDefault();
+  var artistId = $("input[name='artistId']").val();
+  $.ajax({
+    type: "DELETE",
+    url: "/artists/" + artistId + "/songs.json",
+    contentType: "application/json",
+    dataType: "json"
+  })
+  .done(function(data){
   $(".song").remove();
+  });
 }
 
 $(document).ready(function(){
-  $("form").bind('submit', submitSong);
-  $(".newSong").bind('click', addSong);
+  $("form").bind('submit', addSong);
+  // $(".newSong").bind('click', addSong);
   $(".deleteSong").bind('click', deleteSong);
   $(".deleteAllSongs").bind('click', deleteAllSongs);
 });

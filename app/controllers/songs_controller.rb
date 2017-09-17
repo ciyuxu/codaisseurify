@@ -14,10 +14,10 @@ class SongsController < ApplicationController
     respond_to do |format|
       if @song.save
         format.html { redirect_to @song.artist, notice: "Song created" }
-        format.json {}
+        format.json { render json: { :id => @song.id }, status: :created }
       else
         format.html { render :new }
-        format.json {}
+        format.json { render json: @song.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -32,7 +32,9 @@ class SongsController < ApplicationController
   # end
 end
 
-
+  def destroy_all
+    self.destroy_all
+  end
 # def destroy
 #       @song = songs.destroy(song_params)
 #

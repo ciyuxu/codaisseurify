@@ -13,8 +13,9 @@ class ArtistsController < ApplicationController
   def destroy
   @artist = Artist.find(params[:id])
   @artist.destroy
-
+  
   redirect_to root_path
   end
+
 
 end
