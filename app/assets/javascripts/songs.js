@@ -88,4 +88,5 @@ $(document).ready(function(){
   $("form").bind('submit', submitSong);
   $(".newSong").bind('click', addSong);
   $(".deleteSong").bind('click', deleteSong);
+  $(".deleteAllSongs").bind('click', deleteAllSongs);
 });
